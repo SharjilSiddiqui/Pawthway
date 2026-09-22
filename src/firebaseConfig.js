@@ -10,26 +10,24 @@ import { GoogleAuthProvider } from "firebase/auth";
 // Initialize Google Auth Provider
 const provider = new GoogleAuthProvider();
 // Add scopes for Google provider
-provider.addScope('https://www.googleapis.com/auth/userinfo.email');
-provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+provider.addScope("https://www.googleapis.com/auth/userinfo.email");
+provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
 provider.setCustomParameters({
-  prompt: 'select_account'
+  prompt: "select_account",
 });
-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "pawthway-fb57d.firebaseapp.com",
-  projectId: "pawthway-fb57d",
-  storageBucket: "pawthway-fb57d.firebasestorage.app",
-  messagingSenderId: "75676576591",
-  appId: "1:75676576591:web:3b0f958cb738974244b33a"
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 
 export const db = getFirestore(app);
 export const storage = getStorage(app);
